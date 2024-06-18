@@ -1,0 +1,139 @@
+<div class="row">
+    <div [ngClass]="isSidePanelVisible ? 'col-8' : 'col-12'">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row">
+                    <div class="col-6">Product List</div>
+                    <div class="col-6 text-end">
+                        <button (click)="isSidePanelVisible=true" class="btn btn-sm btn-success">New</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3" *ngFor="let product of productList">
+                        <div class="card">
+                            <img class="card-img-top" [src]="product.productImageUrl" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title"><b>Name:</b> {{product.productName}}</h4>
+                                <h6 class="card-text"><b>ShortName:</b> {{product.productShortName}} </h6>
+                                <p class="card-text"><b>CategoryName:</b> {{product.categoryName}} </p>
+                                <p class="card-text"><b>Price:</b> £{{product.productPrice}} </p>
+                                <div class="iconClass">
+                                    <fa-icon class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"
+                                      (click)="setEditId(product)" [icon]="faPencil"></fa-icon>
+                                    <fa-icon class="btn btn-danger" (click)='onDelete(product._id)'
+                                        [icon]="faTrash"></fa-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" *ngIf='isSidePanelVisible'>
+        <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row">
+                    <div class="col-6">New Product</div>
+                    <div class="col-6 text-end">
+                        <button (click)="isSidePanelVisible=false" class="btn btn-sm btn-success">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="sku">SKU</label>
+                        <input type="text" [(ngModel)]="productObj.productSku" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="name">Name</label>
+                        <input type="text" [(ngModel)]="productObj.productName" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="price">Price</label>
+                        <input type="number" [(ngModel)]="productObj.productPrice" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="shortName">Short Name</label>
+                        <input type="text" [(ngModel)]="productObj.productShortName" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryTimeSpan">Delivery Time Span</label>
+                        <input type="text" [(ngModel)]="productObj.deliveryTimeSpan" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="categoryId ">Category Name</label>
+                        <select [(ngModel)]="productObj.categoryName" class="form-select">
+                            <option *ngFor="let cat of categoryList" [value]="cat.categoryName">{{cat.categoryName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="">Image Url</label>
+                        <input type="text" [(ngModel)]="productObj.productImageUrl" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="description">Description</label>
+                        <textarea type="text" [(ngModel)]="productObj.productDescription" class="form-control">
+                            </textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-success">Reset</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-success" (click)='onSave()'>Create Product</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade modal-sm" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Product</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="sku">Name</label>
+                        <input type="text" [(ngModel)]="editProduct.productSku" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="name">ImageUrl</label>
+                        <input type="text" [(ngModel)]="editProduct.productImageUrl" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="price">Price</label>
+                        <input type="number" [(ngModel)]="editProduct.productPrice" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)='onEdit(editProduct._id)'>Edit</button>
+            </div>
+
+        </div>
+    </div>
+</div>

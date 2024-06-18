@@ -1,0 +1,12 @@
+img{
+    height: 200px;
+    width: 85%;
+    border: 1px solid black;
+    margin: 15px auto;
+}
+
+.iconClass{
+    display: flex;
+    gap: 15px;
+    justify-content: end;
+}

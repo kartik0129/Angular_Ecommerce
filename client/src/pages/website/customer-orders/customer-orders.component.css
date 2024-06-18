@@ -1,0 +1,13 @@
+.mainClass{
+    width: 80%;
+    margin: 20px auto;
+}
+.orderClass{
+    display: flex;
+    gap: 15px;
+    border: 1px solid black;
+}
+
+tr{
+    text-align: center;
+}

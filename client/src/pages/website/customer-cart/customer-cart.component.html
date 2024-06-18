@@ -1,0 +1,24 @@
+
+<div>
+    <app-navbar></app-navbar>
+    <div class="mainContainer">
+        @for (item of cartItems; track $index) {
+        <div class="containerClass">
+            <img [src]="item.productImageUrl">
+            <div class="nameClass">
+                <h3>Name: {{item.productName}}</h3>
+                <h5>Quantity: {{item.counter}}</h5>
+                <h6>1 unit price: £{{item.productPrice}}</h6>
+            </div>
+            <p>Total Amount: £{{item.counter * item.productPrice}}</p>
+        </div>
+        }
+        <div class="checkOutClass">
+            <h3>SubTotal:&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;£{{subTotal}}</h3>
+            <h6>CGST:&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;£{{cgst}}</h6>
+            <h6>SGST:&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;£{{sgst}}</h6>
+            <button class="btn btn-success" (click)='onPlaceOrder()'>Place Order</button>
+        </div>
+    </div>
+
+</div>

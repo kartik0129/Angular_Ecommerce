@@ -1,0 +1,18 @@
+
+<div>
+    <app-navbar></app-navbar>
+    <div>
+        <input type="date" [(ngModel)]="dates.startDate">
+        <input type="date" [(ngModel)]="dates.endDate">
+        <button (click)="onAnalyse()">Analyse</button>
+    </div>
+    <div>
+        <canvas baseChart 
+        [datasets]="lineChartData" 
+        [labels]="lineChartLabels" 
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend" 
+        [plugins]="lineChartPlugins">
+    </canvas>
+    </div>
+</div>

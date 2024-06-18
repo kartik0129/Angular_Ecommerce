@@ -1,0 +1,30 @@
+img{
+    width: 30%;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.mainContainer{
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.containerClass{
+    padding: 40px;
+    border: 1px solid black;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.nameClass{
+    display: flex;
+    flex-direction: column;
+}
+
+.checkOutClass{
+    text-align: center;
+    
+}

@@ -1,0 +1,23 @@
+<div>
+<app-navbar></app-navbar>
+    <div class="container containerClass">
+        <h3>CategoryName</h3>
+        <div class="productContainer">
+            <div *ngFor="let product of productList" class="card" style="width:400px">
+                <img class="card-img-top" [src]='product.productImageUrl' alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{product.productName}}</h4>
+                    <p class="card-text">{{product.productDescription}}</p>
+                    <div class="cartClass">
+                        <button (click)="addToCart(product)" class="btn btn-primary">Add to Cart</button>
+                        <div class="counterClass">
+                            <p (click)='decreaseCounter(product)'>-</p>
+                            <p>{{product.counter}}</p>
+                            <p (click)="increaseCounter(product)">+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

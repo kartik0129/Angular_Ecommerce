@@ -1,0 +1,25 @@
+<div>
+    <app-navbar></app-navbar>
+    <div class="mainClass">
+        <table class="table-striped table-bordered">
+            <thead>
+                <th>S.No.</th>
+                <th>Order Id</th>
+                <th>Order Quantity</th>
+                <th>Ordered On</th>
+                <th>Order Amount</th>
+            </thead>
+            <tbody>
+                @for (order of orders; track $index) {
+                <tr>
+                    <td>{{$index+1}}</td>
+                    <td>{{convertDateToId(order.createdAt)}}</td>
+                    <td>{{order.cartItems.length}} items</td>
+                    <td>{{order.createdAt | date: 'MMM dd YY, hh:mm aa'}}</td>
+                    <td>{{order.bill.subTotal + order.bill.cgst + order.bill.sgst | currency:'£'}}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
