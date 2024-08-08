@@ -6,9 +6,11 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/analysis">Analysis</a>
-                </li>
+                @if(isAdmin){
+                    <li class="nav-item" >
+                        <a class="nav-link" href="/analysis">Analysis</a>
+                    </li>
+                }
                 <li class="nav-item">
                     <a class="nav-link" href="/categoryProducts">Products</a>
                 </li>
@@ -19,6 +21,9 @@
                     <a class="nav-link" href="/customerCart"><fa-icon [icon]="faCartShopping"></fa-icon>
                         <span class='badge badge-warning' id='lblCartCount'> {{cartItems.length}} </span>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logout()">Logout</a>
                 </li>
             </ul>
             <form class="d-flex">

@@ -34,7 +34,10 @@ export class LoginComponent {
     this.userSrv.loginUser(this.loginObj).subscribe((res: any) => {
       if (res.success) {
         localStorage.setItem('token', JSON.stringify(res.token));
-        this.router.navigateByUrl('/products')
+        localStorage.setItem('isAdmin', JSON.stringify(res.isAdmin));
+        const isAdmin = res.isAdmin;
+        if (!isAdmin) this.router.navigateByUrl('/categoryProducts');
+        else this.router.navigateByUrl('/products')
       }
     },
       error => {
@@ -48,5 +51,8 @@ export class LoginComponent {
         this.showSignup = !this.showSignup
       }
     })
+  }
+  signinWithGoogle() {
+   
   }
 }

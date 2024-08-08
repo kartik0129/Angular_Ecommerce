@@ -11,36 +11,32 @@ export const routes: Routes = [
     {
         path: '',
         redirectTo: 'login',
-        pathMatch:'full'
+        pathMatch: 'full'
     },
     {
         path: 'login',
-        component:LoginComponent
+        component: LoginComponent
     },
     {
-        path: '',
-        component: LayoutComponent,
-        children: [
-            {
-                path: 'products',
-                component:ProductsComponent
-            }
-        ]
+
+        path: 'products',
+        component: ProductsComponent
+
     },
     {
         path: 'categoryProducts',
         component: CategoryProductsComponent,
     },
     {
-        path: 'customerCart', 
-        component:CustomerCartComponent
+        path: 'customerCart',
+        component: CustomerCartComponent
     },
     {
         path: 'customerOrders',
-        component:CustomerOrdersComponent
+        component: CustomerOrdersComponent
     },
     {
         path: 'analysis',
-        component:AnalyisComponent
+        component: AnalyisComponent
     }
 ];

@@ -39,10 +39,8 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
 
 export const loginUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        console.log(req.body);
         const email = req.body.email;
         const password = req.body.password;
-
         const existingUser = await User.findOne({ email });
         if (!existingUser) {
             res.status(401).json({
@@ -53,11 +51,14 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
         else {
             const hashedPass = existingUser.password ?? '';
             const comparePasswords = await bcrypt.compare(password, hashedPass);
+            let isAdmin = false;
+            if (existingUser.email == 'admin@gmail.com') isAdmin = true;
             if (comparePasswords) {
                 const token = jwt.sign(email, 'kartik')
                 res.status(200).json({
                     success: true,
                     message: 'User successfully logged in',
+                    isAdmin,
                     token
                 })
             }
